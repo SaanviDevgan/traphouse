@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRAPHOUSE — THE 2018 ARCHIVE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red: #b51e2b;
+  --darkred: #78131c;
+  --white: #f6f2eb;
+  --black: #171515;
+  --grey: #d8d0c8;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #ddd5ce;
+  background-image: radial-gradient(#aaa099 0.7px, transparent 0.7px);
+  background-size: 5px 5px;
+  color: var(--black);
+  font-family: 'Courier Prime', monospace;
+}
+
+/* BROWSER */
+
+.browser {
+  height: 38px;
+  background: #f5f1ec;
+  border-bottom: 2px solid #b8afa7;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 12px;
+  font-size: 10px;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.browser-dots i {
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.browser-address {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 4px 12px;
+  flex: 1;
+  color: #777;
+}
+
+/* PAGE */
+
+.site {
+  width: min(1120px, 95%);
+  margin: 24px auto;
+  border: 2px solid var(--black);
+  background: var(--white);
+  box-shadow: 10px 10px 0 var(--red);
+}
+
+/* TOP NAV */
+
+.topnav {
+  background: var(--black);
+  color: white;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.topnav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 17px;
+}
+
+.topnav a:hover {
+  color: #ff9299;
+}
+
+/* HERO */
+
+.hero {
+  background: var(--red);
+  color: white;
+  padding: 35px 35px 28px;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+.hero::before {
+  content: "2018";
+  position: absolute;
+  font-family: Anton;
+  font-size: 260px;
+  right: -10px;
+  bottom: -100px;
+  color: #ffffff;
+  opacity: .055;
+  pointer-events: none;
+}
+
+.hero-top {
+  font-size: 10px;
+  letter-spacing: 4px;
+  border-bottom: 1px solid #ffffff66;
+  padding-bottom: 12px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero h1 {
+  font-family: Anton, sans-serif;
+  font-size: clamp(65px, 12vw, 130px);
+  line-height: .82;
+  letter-spacing: -4px;
+  margin: 32px 0 20px;
+  text-shadow: 5px 5px 0 var(--darkred);
+}
+
+.hero h1 span {
+  color: #ffc4c4;
+}
+
+.hero-caption {
+  font-family: 'Special Elite';
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+.hero-photo {
+  background: white;
+  padding: 9px 9px 24px;
+  transform: rotate(5deg);
+  box-shadow: 6px 8px 0 #76131c;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-photo p {
+  color: var(--black);
+  text-align: center;
+  font-family: 'Permanent Marker';
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+
+/* RUNNING STRIP */
+
+.strip {
+  overflow: hidden;
+  background: var(--black);
+  color: white;
+  padding: 11px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+/* MAIN LAYOUT */
+
+.layout {
+  display: grid;
+  grid-template-columns: 205px 1fr;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  background: #ece5dc;
+  border-right: 2px dashed #c6b9ae;
+  padding: 22px 17px;
+}
+
+.sidebar h3 {
+  font-family: Anton;
+  color: var(--red);
+  font-size: 23px;
+  border-bottom: 3px solid var(--red);
+  margin: 0 0 12px;
+  padding-bottom: 5px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 11px 5px;
+  text-decoration: none;
+  color: var(--black);
+  border-bottom: 1px dotted #aaa;
+  font-size: 11px;
+  transition: .2s;
+}
+
+.sidebar a:hover {
+  background: var(--red);
+  color: white;
+  padding-left: 12px;
+}
+
+.sidebar-note {
+  background: white;
+  padding: 12px;
+  margin-top: 27px;
+  font-family: 'Special Elite';
+  font-size: 12px;
+  line-height: 1.7;
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 0 #c5b8ac;
+}
+
+.sidebar-note strong {
+  color: var(--red);
+}
+
+.stamp {
+  border: 3px double var(--red);
+  color: var(--red);
+  font-family: Anton;
+  font-size: 23px;
+  text-align: center;
+  padding: 12px 4px;
+  margin: 28px 0;
+  transform: rotate(4deg);
+}
+
+.counter {
+  background: var(--black);
+  color: white;
+  padding: 12px 5px;
+  text-align: center;
+  font-size: 9px;
+}
+
+.counter strong {
+  display: block;
+  color: #ff858d;
+  font-size: 23px;
+  letter-spacing: 4px;
+  margin: 8px 0;
+}
+
+/* CONTENT */
+
+.main {
+  padding: 28px;
+  min-width: 0;
+}
+
+.section-heading {
+  font-family: Anton;
+  font-size: 29px;
+  color: var(--red);
+  border-bottom: 3px solid var(--black);
+  padding-bottom: 7px;
+  margin: 0 0 20px;
+}
+
+.section-heading small {
+  font-family: 'Courier Prime';
+  color: var(--black);
+  font-size: 10px;
+  float: right;
+  margin-top: 13px;
+}
+
+/* INTRO */
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 35px;
+  background: white;
+  border: 1px solid #cfc3b9;
+  padding: 22px;
+  box-shadow: 5px 5px 0 #d4c6ba;
+}
+
+.intro h2 {
+  font-family: 'Special Elite';
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+
+.intro p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.intro-mark {
+  background: var(--red);
+  color: white;
+  padding: 15px 7px;
+  text-align: center;
+  font-family: Anton;
+  font-size: 24px;
+  transform: rotate(6deg);
+}
+
+/* IMAGE COLLAGE */
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.polaroid {
+  background: white;
+  padding: 10px 10px 27px;
+  border: 1px solid #d5ccc4;
+  box-shadow: 3px 5px 7px #0002;
+  position: relative;
+}
+
+.polaroid:nth-child(1) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(2) {
+  transform: rotate(2deg);
+  margin-top: 18px;
+}
+
+.polaroid:nth-child(3) {
+  transform: rotate(1.5deg);
+}
+
+.polaroid:nth-child(4) {
+  transform: rotate(-2deg);
+  margin-top: 17px;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 235px;
+  object-fit: cover;
+  display: block;
+  background: #ddd;
+}
+
+.polaroid figcaption {
+  text-align: center;
+  padding-top: 13px;
+  font-family: 'Permanent Marker';
+  font-size: 13px;
+}
+
+.pin {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--red);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  box-shadow: 1px 2px 2px #0004;
+}
+
+/* ARCHIVE BOXES */
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0 35px;
+}
+
+.archive-card {
+  background: #eee6dd;
+  border: 1px solid #cfc3b8;
+  padding: 16px;
+  transition: .2s;
+}
+
+.archive-card:hover {
+  background: #f5d9d9;
+  transform: translateY(-3px);
+}
+
+.archive-card .number {
+  font-family: Anton;
+  font-size: 37px;
+  color: var(--red);
+}
+
+.archive-card h3 {
+  font-family: 'Special Elite';
+  font-size: 17px;
+  margin: 5px 0;
+}
+
+.archive-card p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* TIMELINE */
+
+.timeline {
+  border-left: 3px solid var(--red);
+  margin-left: 10px;
+  padding-left: 20px;
+  margin-bottom: 38px;
+}
+
+.timeline-entry {
+  position: relative;
+  background: white;
+  border: 1px solid #d5ccc4;
+  padding: 13px;
+  margin-bottom: 16px;
+}
+
+.timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 17px;
+  width: 11px;
+  height: 11px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+.timeline-entry small {
+  color: var(--red);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.timeline-entry p {
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* QUOTE */
+
+.quote {
+  background: var(--red);
+  color: white;
+  padding: 24px;
+  text-align: center;
+  margin: 35px 0;
+  transform: rotate(-1deg);
+}
+
+.quote p {
+  font-family: 'Special Elite';
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+
+.footer {
+  background: var(--black);
+  color: white;
+  text-align: center;
+  padding: 27px 15px;
+  font-size: 10px;
+  line-height: 2.2;
+  letter-spacing: 2px;
+}
+
+.footer strong {
+  color: #ff8e95;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    width: 180px;
+    margin: 5px auto 15px;
+  }
+
+  .hero {
+    padding: 25px 20px;
+  }
+
+  .hero h1 {
+    font-size: 75px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 2px dashed #c6b9ae;
+  }
+
+  .sidebar nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10px;
+  }
+
+  .main {
+    padding: 19px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-mark {
+    width: 130px;
+    margin: auto;
+  }
+
+  .polaroid img {
+    height: 170px;
+  }
+
+  .section-heading {
+    font-size: 25px;
+  }
+}
+
+@media(max-width:390px) {
+  .gallery {
+    gap: 13px;
+  }
+
+  .polaroid {
+    padding: 6px 6px 20px;
+  }
+
+  .polaroid img {
+    height: 130px;
+  }
+
+  .polaroid figcaption {
+    font-size: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BROWSER BAR -->
+
+<div class="browser">
+  <div class="browser-dots">
+    <i></i><i></i><i></i>
+  </div>
+  <div class="browser-address">
+    http://www.traphouse-archive.com/2018
+  </div>
+  <span>✕</span>
+</div>
+
+<div class="site">
+
+<!-- NAVIGATION -->
+
+<nav class="topnav">
+  <strong>THF. / 2018</strong>
+  <div>
+    <a href="#home">HOME</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#archive">ARCHIVE</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+  <div class="hero-top">
+    UNOFFICIAL FAN ARCHIVE · EST. 2018 · ISSUE NO. 001
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <h1>TRAP<br><span>HOUSE.</span></h1>
+      <div class="hero-caption">
+        THE INTERNET WAS DIFFERENT BACK THEN.
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="https://i.pinimg.com/736x/eb/5c/df/eb5cdf6c1aad04961df1bb28c7f92350.jpg"
+        alt="Trap House era photograph">
+      <p>somewhere in 2018 ★</p>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  ✦ THE TRAP HOUSE FILES ✦ SAM & COLBY ✦
+  2018 FOREVER ✦ GOOD OLD DAYS ✦ THE TRAP HOUSE FILES ✦
+</div>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+  <h3>INDEX.</h3>
+
+  <nav>
+    <a href="#home">01 — THE BEGINNING</a>
+    <a href="#gallery">02 — PHOTO WALL</a>
+    <a href="#archive">03 — THE ARCHIVE</a>
+    <a href="#timeline">04 — MEMORY LOG</a>
+    <a href="#about">05 — ABOUT THIS SITE</a>
+  </nav>
+
+  <div class="sidebar-note">
+    <strong>DEAR VISITOR,</strong><br>
+    You've somehow ended up in a little corner of 2018.
+    Don't forget to look around.
+    <br><br>
+    — THF
+  </div>
+
+  <div class="stamp">
+    100%<br>2018
+  </div>
+
+  <div class="counter">
+    VISITOR NUMBER
+    <strong>001928</strong>
+    SINCE THE OLD DAYS.
+  </div>
+
+  <p style="font-size:10px;line-height:1.8;margin-top:25px">
+    WEBSITE STATUS:<br>
+    <span style="color:#b51e2b">● ONLINE</span><br><br>
+    LAST UPDATED:<br>
+    DECEMBER 2018
+  </p>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+
+<main class="main">
+
+<section id="home" class="intro">
+  <div>
+    <h2>oh, you're here.</h2>
+    <p>
+      Welcome to the Trap House Files.
+      A little archive dedicated to Sam, Colby,
+      the Trap House and an era of YouTube
+      that will always have a special place
+      in internet history.
+    </p>
+    <p>
+      Four walls. Countless memories.
+      One very unforgettable era.
+    </p>
+  </div>
+
+  <div class="intro-mark">
+    EST.<br>2018
+  </div>
+</section>
+
+<!-- PHOTO WALL -->
+
+<section id="gallery">
+
+  <h2 class="section-heading">
+    THE PHOTO WALL.
+    <small>FIG. 01 — 04</small>
+  </h2>
+
+  <div class="gallery">
+
+    <figure class="polaroid">
+      <div class="pin"></div>
+      <img
+        src="https://i.pinimg.com/736x/eb/5c/df/eb5cdf6c1aad04961df1bb28c7f92350.jpg"
+        alt="Photo from the 2018 era">
+      <figcaption>the beginning.</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <div class="pin"></div>
+      <img
+        src="https://i.pinimg.com/736x/bd/a5/8f/bda58fbfd00fe09bac9755499055f506.jpg"
+        alt="Photo from the Trap House era">
+      <figcaption>just like old times.</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <div class="pin"></div>
+      <img
+        src="https://i.pinimg.com/736x/ab/4c/69/ab4c69a12040cec2757abd17764cbecf.jpg"
+        alt="2018 archive photograph">
+      <figcaption>the memories remain.</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <div class="pin"></div>
+      <img
+        src="https://i.pinimg.com/736x/50/17/90/501790be51be303a5b948037de5f0ab4.jpg"
+        alt="2018 archive photograph">
+      <figcaption>2018, forever.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+
+<section id="archive">
+
+  <h2 class="section-heading">
+    INSIDE THE ARCHIVE.
+    <small>THE COLLECTION</small>
+  </h2>
+
+  <div class="archive-grid">
+
+    <article class="archive-card">
+      <div class="number">01</div>
+      <h3>The People</h3>
+      <p>Sam, Colby and the people who made the era memorable.</p>
+    </article>
+
+    <article class="archive-card">
+      <div class="number">02</div>
+      <h3>The House</h3>
+      <p>A little corner of YouTube history. The Trap House.</p>
+    </article>
+
+    <article class="archive-card">
+      <div class="number">03</div>
+      <h3>The Videos</h3>
+      <p>The uploads, the challenges and the unforgettable moments.</p>
+    </article>
+
+    <article class="archive-card">
+      <div class="number">04</div>
+      <h3>The Era</h3>
+      <p>Old internet energy that cannot quite be recreated.</p>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section id="timeline">
+
+  <h2 class="section-heading">
+    THE MEMORY LOG.
+    <small>ARCHIVE NOTES</small>
+  </h2>
+
+  <div class="timeline">
+
+    <article class="timeline-entry">
+      <small>CHAPTER 001 — THE BEGINNING</small>
+      <p>
+        The Trap House era becomes a special chapter
+        in the Sam and Colby story.
+      </p>
+    </article>
+
+    <article class="timeline-entry">
+      <small>CHAPTER 002 — THE CHAOS</small>
+      <p>
+        Videos, friendships, funny moments and
+        memories worth revisiting.
+      </p>
+    </article>
+
+    <article class="timeline-entry">
+      <small>CHAPTER 003 — THE NOSTALGIA</small>
+      <p>
+        Years later, we're still looking back
+        at the golden days.
+      </p>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- QUOTE -->
+
+<div class="quote">
+  <p>
+    "some things are better left in the archives,
+    but never forgotten."
+  </p>
+  <span style="font-size:10px;letter-spacing:3px">
+    — THE TRAPHOUSE FILES
+  </span>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <h2 class="section-heading">A LITTLE ABOUT US.</h2>
+
+  <p style="font-size:12px;line-height:2">
+    This is an unofficial fan-made website celebrating
+    the 2018 Sam and Colby Trap House era.
+    Made for the memories, the nostalgia and
+    the people who still love looking back.
+  </p>
+
+  <p style="font-family:'Permanent Marker';color:#b51e2b">
+    thank you for visiting. xx
+  </p>
+</section>
+
+</main>
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  <strong>THE TRAPHOUSE FILES.</strong><br>
+  AN UNOFFICIAL FAN-MADE ARCHIVE<br>
+  EST. 2018 · REVISITED 2026<br>
+  <span>✦ MADE WITH NOSTALGIA & A LITTLE TOO MUCH LOVE ✦</span>
+</footer>
+
+</div>
+</body>
+</html>
